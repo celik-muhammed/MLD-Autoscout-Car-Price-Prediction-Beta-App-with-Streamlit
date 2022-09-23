@@ -2,7 +2,6 @@
 import streamlit as st
 import streamlit.components.v1 as components
 from urllib.request import urlopen
-from os import system
 from gtts import gTTS
 import time
 
@@ -22,6 +21,8 @@ st.markdown("<h2 style='text-align:center; color:floralWhite;'>Car Price Predict
 
 # st.help(range)
 
+col1, col2, col3 = st.columns([1,8,1]) 
+
 #Image
 try:
     # Some Code
@@ -32,9 +33,12 @@ try:
     #image url
     url = "https://storage.googleapis.com/kaggle-datasets-images/383055/741735/4e7acec211a711b2669d91a771c0b4ca/dataset-cover.jpg"
     
-    #image read with imageio
-    from imageio.v2 import imread
-    img2 = imread(url)
+    with col2:
+        st.image(url, caption="Predicting the Prices of Cars")
+        
+#     #image read with imageio
+#     from imageio.v2 import imread
+#     img2 = imread(url)
     
 #     #image read with requests
 #     from requests import get
@@ -45,15 +49,17 @@ try:
     
 except:
     # Executed if error in the
-    # try block
-    st.text("Image Not Read.")
+    # try block   
+    components.html('''
+    <script>
+        alert("Image Not Loading!");
+    </script>
+    ''')
+    st.text("Image Not Loading!")
     
 else:
-    # execute if no exception
-    col1, col2, col3 = st.columns([1,8,1]) 
-    
-    with col2:
-        st.image(url, caption="Predicting the Prices of Cars")
+    # execute if no exception 
+    pass
         
 finally:
     # Some code .....(always executed)   
@@ -80,16 +86,19 @@ input_gears = st.sidebar.slider('Gears', df["Gears"].min(), df["Gears"].max(), f
 import pickle
 model = pickle.load(open("final_model_scout", "rb"))
 
-if st.button('Make Prediction'):
-    data = {"make_model" : input_make_model,
-            "Gearing_Type" : input_gearing_type,
-            "age" : input_age,
-            "hp_kW" : input_hp_kW,
-            "km" : input_km,
-            "Gears" : input_gears}
-    input_data = pd.DataFrame(data, index=[0])         
-    st.write(input_data.convert_dtypes())
-    
+data = {"make_model" : input_make_model,
+        "Gearing_Type" : input_gearing_type,
+        "age" : input_age,
+        "hp_kW" : input_hp_kW,
+        "km" : input_km,
+        "Gears" : input_gears}
+input_data = pd.DataFrame(data, index=[0])  
+
+with col2:
+    if st.checkbox('Show Selected Values', value=True):
+        st.write(input_data.convert_dtypes())
+
+if st.button('Make Prediction'):    
     prediction = model.predict(input_data)
     prediction_text = model.predict(input_data)[0].round(2)
     audio = gTTS(text=str(prediction_text), lang="en", slow=False)
