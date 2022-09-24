@@ -2,4 +2,3 @@ scikit-learn==1.0.2
 streamlit==1.10.0
 pyttsx3==2.90
 pyttsx3eaidk==2.91
-python-espeak==0.6.3
