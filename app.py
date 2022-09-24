@@ -102,13 +102,13 @@ with col2:
         
 # assign
 video_html = """
-    <iframe width="0" height="0" 
-    src="https://www.youtube-nocookie.com/embed/t3217H8JppI?rel=0&amp;autoplay=1&mute=0&start=2858&amp;end=2867&controls=0&showinfo=0" 
-    allow="autoplay;"></iframe>
+<iframe width="0" height="0" 
+src="https://www.youtube-nocookie.com/embed/t3217H8JppI?rel=0&amp;autoplay=1&mute=0&start=2860&amp;end=2866&controls=0&showinfo=0" 
+allow="autoplay;"></iframe>
  """
 audio_html = """    
 <audio controls autoplay style="display: none">
-    <source src="https://ssl.gstatic.com/dictionary/static/pronunciation/2022-03-02/audio/pr/predicting_en_gb_1.mp3" type="audio/mpeg">
+<source src="https://ssl.gstatic.com/dictionary/static/pronunciation/2022-03-02/audio/pr/predicting_en_gb_1.mp3" type="audio/mpeg">
 </audio>
 """ 
 if st.button('Make Prediction'):   
