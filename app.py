@@ -120,8 +120,8 @@ if st.button('Make Prediction'):
     time.sleep(3.2)  # wait for 2 seconds to finish the playing of the audio
     sound.empty()  # optionally delete the element afterwards    
     st.success(f'Your Car price is:&emsp;${prediction_text}')
-    pyttsx3.speak(prediction_text)
-#     st.audio("example.mp3")    
+    st.audio("example.mp3")  
+    pyttsx3.speak(prediction_text)  
     
     
 html_temp = """
