@@ -2,6 +2,7 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
+from gtts import gTTS
 import pyttsx3
 import time
 
@@ -116,6 +117,9 @@ if st.button('Make Prediction'):
     
     prediction = model.predict(input_data)
     prediction_text = model.predict(input_data)[0].round(2)
+        
+    audio = gTTS(text=str(prediction_text), lang="en", slow=False)
+    audio.save("example.mp3")
     
     time.sleep(3.2)  # wait for 2 seconds to finish the playing of the audio
     sound.empty()  # optionally delete the element afterwards    
