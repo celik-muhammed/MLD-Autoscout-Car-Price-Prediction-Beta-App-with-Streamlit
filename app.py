@@ -1,8 +1,8 @@
 
 import streamlit as st
 import streamlit.components.v1 as components
-from urllib.request import urlopen
-from gtts import gTTS
+
+import pyttsx3
 import time
 
 import pandas as pd
@@ -41,6 +41,7 @@ try:
 #     img2 = imread(url)
     
 #     #image read with requests
+#     from urllib.request import urlopen
 #     from requests import get
 #     from io import BytesIO
 #     response = get(url)
@@ -97,34 +98,34 @@ input_data = pd.DataFrame(data, index=[0])
 with col2:
     if st.checkbox('Show Selected Values', value=True):
         st.write(input_data.convert_dtypes())
-
-if st.button('Make Prediction'):    
+        
+# assign
+video_html = """
+    <iframe width="0" height="0" 
+    src="https://www.youtube-nocookie.com/embed/t3217H8JppI?rel=0&amp;autoplay=1&mute=0&start=2858&amp;end=2867&controls=0&showinfo=0" 
+    allow="autoplay;"></iframe>
+ """
+audio_html = """    
+<audio controls autoplay style="display: none">
+    <source src="https://ssl.gstatic.com/dictionary/static/pronunciation/2022-03-02/audio/pr/predicting_en_gb_1.mp3" type="audio/mpeg">
+</audio>
+""" 
+if st.button('Make Prediction'):   
+    sound = st.empty()
+    sound.markdown(video_html, unsafe_allow_html=True)
+    
     prediction = model.predict(input_data)
     prediction_text = model.predict(input_data)[0].round(2)
-    audio = gTTS(text=str(prediction_text), lang="en", slow=False)
-    audio.save("example.mp3")
     
-    video_html = """
-        <iframe width="0" height="0">
-         <source src="https://www.youtube.com/embed/t3217H8JppI?rel=0&amp;autoplay=1&mute=0&start=2860&amp;end=2866&controls=0&showinfo=0" 
-         allow="autoplay;">
-        </iframe>
-     """
-    audio_html = """    
-    <audio controls autoplay style="display: none">
-        <source src="https://ssl.gstatic.com/dictionary/static/pronunciation/2022-03-02/audio/pr/predicting_en_gb_1.mp3" type="audio/mpeg">
-    </audio>
-    """
-    sound = st.empty()
-    sound.markdown(audio_html, unsafe_allow_html=True)
-#     time.sleep(0.8)  # wait for 2 seconds to finish the playing of the audio
-#     sound.empty()  # optionally delete the element afterwards    
+    time.sleep(3.2)  # wait for 2 seconds to finish the playing of the audio
+    sound.empty()  # optionally delete the element afterwards    
     st.success(f'Your Car price is:&emsp;${prediction_text}')
-    st.audio("example.mp3")
+    pyttsx3.speak(prediction_text)
+#     st.audio("example.mp3")    
+    
     
 html_temp = """
 <div style="background-color:tomato;padding:1.5px">
 <h1 style="color:white;text-align:center;">Single Customer </h1>
 </div><br>"""
 st.sidebar.markdown(html_temp,unsafe_allow_html=True)
-
