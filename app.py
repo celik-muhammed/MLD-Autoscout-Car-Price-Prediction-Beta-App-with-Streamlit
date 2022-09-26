@@ -69,7 +69,7 @@ finally:
 
 
 # read Dataset
-df = pd.read_csv("final_scout.csv")
+df = pd.read_csv("final_scout.csv") #.drop(columns='price')
 
 with col2:
     if st.checkbox('Show dataframe'):
@@ -79,21 +79,21 @@ with col2:
 st.sidebar.subheader("Select the features you want for price estimation")
 
 input_make_model = st.sidebar.selectbox('Name of the Car Model:', df['make_model'].unique())
-input_gearing_type = st.sidebar.radio('Name of the Gearing Type:', df['Gearing_Type'].unique())
-input_hp_kW	 = st.sidebar.slider('Horse Power(kW)', df["hp_kW"].min(), df["hp_kW"].max(), float(df["hp_kW"].mode()[0]), 1.0)
+input_gearing_type = st.sidebar.radio('Name of the Gearing Type:', df['gearing_type'].unique())
+input_hp_kW	 = st.sidebar.slider('Horse Power(kW)', df["hp_kw"].min(), df["hp_kw"].max(), float(df["hp_kw"].mode()[0]), 1.0)
 input_km = st.sidebar.slider('Kilometer(km)', 0.0, df["km"].max(), float(df["km"].mode()[0]), 1.0)
 input_age = st.sidebar.slider('Car Age', 0.0, df["age"].max(), float(df["age"].mode()[0]), 1.0)
-input_gears = st.sidebar.slider('Gears', df["Gears"].min(), df["Gears"].max(), float(df["Gears"].mode()[0]), 1.0)
+input_gears = st.sidebar.slider('Gears', df["gears"].min(), df["gears"].max(), float(df["gears"].mode()[0]), 1.0)
 
 import pickle
 model = pickle.load(open("final_model_scout", "rb"))
 
 data = {"make_model" : input_make_model,
-        "Gearing_Type" : input_gearing_type,
+        "gearing_type" : input_gearing_type,
         "age" : input_age,
-        "hp_kW" : input_hp_kW,
+        "hp_kw" : input_hp_kW,
         "km" : input_km,
-        "Gears" : input_gears}
+        "gears" : input_gears}
 input_data = pd.DataFrame(data, index=[0])  
 
 with col2:
