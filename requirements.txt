@@ -1,5 +1,5 @@
 scikit-learn==1.0.2
-streamlit==1.10.0
+streamlit==1.13.0
 streamlit_nested_layout==0.1.1
 gTTS==2.2.4
 pyttsx3==2.90
