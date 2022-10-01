@@ -5,7 +5,7 @@
 - [ML-Autoscout-Car-Price-Prediction Visually Compare Models Performance](https://github.com/celik-muhammed/ML-Autoscout-Car-Price-Prediction-Project/blob/master/README.md 'ML-Autoscout-Car-Price-Prediction')
 - [requirements.txt](./requirements.txt 'requirements.txt')
 
-## [ML Autoscout Car Price Prediction App with Streamlit (always available)](https://celik-muhammed-aws-autoscout-car-price-prediction-mo-app-4mzrh3.streamlitapp.com/)
+## [ML Autoscout Car Price Prediction App with Streamlit (always available)](https://celik-muhammed-mld-autoscout-car-price-prediction-be-app-9uo6q1.streamlitapp.com/)
 
 <div align="center">
 
