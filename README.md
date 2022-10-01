@@ -10,5 +10,5 @@
 <div align="center">
 
 ### [AWS (offline) ML Autoscout Car Price Prediction App with Streamlit](http://54.204.253.204:8501 'ML Autoscout Car Price Prediction App with Streamlit')
-<a href='http://54.204.253.204:8501'><img src='https://user-images.githubusercontent.com/94930605/192065963-bd1a9b7a-3be6-4b6e-8b7d-0b3a0e9063c0.png' alt='Autoscout' title='ML-Autoscout-Car-Price-Prediction' width=90%, height=450></a>
+<a href='http://54.204.253.204:8501'><img src='https://i.ibb.co/kX9LX3J/autoscout.png' alt='Autoscout' title='ML-Autoscout-Car-Price-Prediction' width=90%, height=450></a>
 </div>
