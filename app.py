@@ -80,7 +80,7 @@ with col2:
         st.write(df)
 
         
-@st.cache(suppress_st_warning=True)  # 👈 Changed this
+# @st.cache(suppress_st_warning=True)  # 👈 Changed this
 def user_input_data():
     make_model = st.sidebar.selectbox('Name of the Car Model:', df['make_model'].unique())
     gearing_type = st.sidebar.radio('Name of the Gearing Type:', df['gearing_type'].unique())
@@ -120,7 +120,7 @@ with col2:
     if st.checkbox('Show User Inputs', value=True):
         st.write(input_df.rename({0:'User_Input'}).T)
   
-@st.cache(suppress_st_warning=True)  # 👈 Changed this
+
 def show_pred_img(input_df):
     pred = input_df['make_model'].unique()[0]
     
